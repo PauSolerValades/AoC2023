@@ -11,11 +11,11 @@ with open('input.txt', 'r') as file:
 
 counts = [(index, len(numbers.intersection(winning))) for index, (numbers, winning) in enumerate(matrix, start=1)]
 
-updates = {game: 1 for game in range(1, len(matrix) + 1)}
+number_of_games = {game: 1 for game in range(1, len(matrix) + 1)}
 
 for game, repetitions in counts:
     for i in range(1, repetitions + 1):
-        updates[game + i] = updates.get(game + i, 1) + updates[game]
+        number_of_games[game + i] = number_of_games.get(game + i, 1) + number_of_games[game]
 
-result = sum(updates.values())
+result = sum(number_of_games.values())
 print(result)
